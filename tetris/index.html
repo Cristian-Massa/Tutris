@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tetris POO</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="game">
+        <canvas
+          id="board"
+          width="300"
+          height="600"
+          aria-label="Tablero de Tetris"
+        ></canvas>
+        <div class="sidebar">
+          <h1>TETRIS</h1>
+          <div class="panel">
+            <div class="row">
+              <span>Puntaje</span><strong id="score">0</strong>
+            </div>
+            <div class="row">
+              <span>Líneas</span><strong id="lines">0</strong>
+            </div>
+            <div class="row">
+              <span>Nivel</span><strong id="level">1</strong>
+            </div>
+          </div>
+
+          <div class="panel">
+            <span>Siguiente</span>
+            <canvas id="next" width="120" height="120"></canvas>
+          </div>
+          <div class="panel">
+            <label for="volume">Volumen:</label>
+            <input
+              type="range"
+              id="volume"
+              min="0"
+              max="1"
+              step="0.01"
+              value="1"
+            />
+          </div>
+          <div class="panel">
+            <span>Controles</span>
+            <ul class="keys">
+              <li>←/→ mover</li>
+              <li>↑ rotar</li>
+              <li>↓ caída suave</li>
+              <li>Espacio caída dura</li>
+              <li>P pausa</li>
+              <li>R reiniciar</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <audio id="bg-music" src="src/assets/music.mp3" loop></audio>
+
+    <script src="src/main.js"></script>
+  </body>
+</html>

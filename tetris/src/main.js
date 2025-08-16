@@ -243,7 +243,7 @@ class Game {
     this.running = true;
 
     this.musicStarted = false;
-    this.music = new Audio("src/assets/music.mp3");
+    this.music = new Audio("/music.mp3");
     this.music.loop = true;
 
     this.globalVolume = 0.5;

@@ -143,7 +143,7 @@ class Board {
 }
 
 class Renderer {
-  constructor(boardCanvas, nextCanvas) {
+  constructor(boardCanvas, nextCanvas, _updateHud) {
     this.ctx = boardCanvas.getContext("2d");
     this.nctx = nextCanvas.getContext("2d");
     this.canvas = boardCanvas;
@@ -272,7 +272,6 @@ class Game {
         this.music.play();
         this.musicStarted = true;
       }
-      // if (e.repeat) return;
       switch (e.code) {
         case "ArrowLeft":
           this.move(-1);
@@ -305,10 +304,10 @@ class Game {
   spawn() {
     this.current = new Tetromino(this.nextType);
     this.nextType = this.rng.next();
-    console.log(this.board.canPlace(this.current), this.current);
+    this._updateHUD();
     if (!this.board.canPlace(this.current)) {
       this.running = false;
-      this.gameOverOverlayShown = false; // permite que el overlay se dibuje en loop
+      this.gameOverOverlayShown = false;
       return;
     }
   }
@@ -452,10 +451,9 @@ class Game {
       }
     }
 
-    // Siempre dibujar, aunque el juego no esté corriendo
     if (!this.running && this.current && !this.gameOverOverlayShown) {
       this._draw(true, "GAME OVER — Pulsa R");
-      this.gameOverOverlayShown = true; // para que no redibuje todo el tiempo
+      this.gameOverOverlayShown = true;
     } else if (this.running) {
       this._draw();
     }
